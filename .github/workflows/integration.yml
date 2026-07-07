@@ -14,12 +14,12 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v4
         with:
-          python-version: 3.10
+          python-version: "3.10"
 
       - name: Install dependencies
         run: |
@@ -45,7 +45,7 @@ jobs:
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: ### 🧪 Test Results with Coverage\n\n\``\n${truncated}\n````
+              body: "### 🧪 Test Results with Coverage\n\n```\n" + truncated + "\n```"
             });
 
       - name: Fallo en caso de no pasar unit tests
